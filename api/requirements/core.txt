@@ -1,0 +1,5 @@
+FastApi
+uvicorn[standard]
+jinja2
+python-barcode 
+qrcode

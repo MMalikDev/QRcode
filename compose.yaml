@@ -1,0 +1,44 @@
+name: development
+
+networks:
+  proxy:
+    name: $NETWORK_NAME
+    external: true
+
+services:
+  django:
+    build: $DJANGO_IMAGE
+    image: server_django
+    container_name: django
+    restart: unless-stopped
+
+    environment:
+      ALLOWED_HOSTS: $ALLOWED_HOSTS
+      SECRET_KEY: $SECRET_KEY
+      DEBUG: $DEBUG
+      WEB_PORT: ${DJANGO_PORT:-80}
+
+    networks:
+      proxy:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.django.rule=Host(`django.localhost`)"
+      - "traefik.http.services.django.loadbalancer.server.port=${DJANGO_PORT:-80}"
+
+  fastapi:
+    build: $FASTAPI_IMAGE
+    image: server_fastapi
+    container_name: fastapi
+    # restart: unless-stopped
+
+    environment:
+      THIRD_PARTY_LOGS: $THIRD_PARTY_LOGS
+      LOG_LEVEL: $LOG_LEVEL
+      WEB_PORT: ${FASTAPI_PORT:-80}
+
+    networks:
+      proxy:
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.fastapi.rule=Host(`fastapi.localhost`)"
+      - "traefik.http.services.fastapi.loadbalancer.server.port=${FASTAPI_PORT:-80}"

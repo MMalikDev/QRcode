@@ -1,0 +1,144 @@
+{% extends 'base.html' %}
+<!--  -->
+
+{% block main %}
+
+<div class="container">
+  <div class="images">
+    <img
+      id="tabpanel-qrcode-image"
+      class="tab-images"
+      src="{% url 'qrcode:api' %}"
+      aria-labelledby="tab-qrcode"
+      aria-selected="true"
+      alt="QRcode"
+    />
+
+    <img
+      id="tabpanel-barcode-image"
+      class="tab-images"
+      src="{% url 'barcode:api' %}"
+      aria-labelledby="tab-barcode"
+      aria-selected="false"
+      alt="Barcode"
+      hidden
+    />
+  </div>
+
+  <div class="tabs">
+    <div class="tablist" role="tablist" aria-label="Image Code Forms Tabs">
+      <button
+        role="tab"
+        tabindex="0"
+        id="tab-qrcode"
+        class="tab"
+        aria-selected="true"
+        data-content="qrcode"
+        aria-controls="tabpanel-qrcode"
+      >
+        QRcode
+      </button>
+      <button
+        role="tab"
+        tabindex="-1"
+        id="tab-barcode"
+        class="tab"
+        aria-selected="fa"
+        data-content="barcode"
+        aria-controls="tabpanel-barcode"
+      >
+        Barcode
+      </button>
+    </div>
+    <div class="panels">
+      <div
+        role="tabpanel"
+        tabindex="0"
+        class="tabpanel"
+        id="tabpanel-qrcode"
+        aria-labelledby="tab-qrcode"
+      >
+        <form id="qrcode-form">
+          <div class="form-group">
+            <label for="qrcode-data">Data</label>
+            <input id="qrcode-data" type="text" name="data" />
+          </div>
+
+          <div class="form-group">
+            <button
+              id="qrcode-generate"
+              class="btn btn-secondary"
+              type="submit"
+            >
+              Generate
+            </button>
+            <button id="qrcode-download" class="btn btn-primary">
+              Download
+            </button>
+            <a id="qrcode-link" class="download"> </a>
+          </div>
+        </form>
+      </div>
+
+      <div
+        role="tabpanel"
+        tabindex="0"
+        class="tabpanel"
+        id="tabpanel-barcode"
+        aria-labelledby="tab-barcode"
+        hidden
+      >
+        <form id="barcode-form">
+          <div class="form-group">
+            <label for="barcode-data">Data</label>
+            <input id="barcode-data" type="text" name="data" />
+          </div>
+
+          <div class="form-group">
+            <label for="barcode-type">Type</label>
+            <select id="barcode-type" name="type">
+              <option value="code128" selected>CODE128</option>
+              <option value="codabar">CODABAR</option>
+              <option value="code39">CODE39</option>
+              <option value="ean">EAN</option>
+              <option value="ean13">EAN13</option>
+              <option value="ean13-guard">EAN13-GUARD</option>
+              <option value="ean14">EAN14</option>
+              <option value="ean8">EAN8</option>
+              <option value="ean8-guard">EAN8-GUARD</option>
+              <option value="gs1">GS1</option>
+              <option value="gs1_128">GS1_128</option>
+              <option value="gtin">GTIN</option>
+              <option value="isbn">ISBN</option>
+              <option value="isbn10">ISBN10</option>
+              <option value="isbn13">ISBN13</option>
+              <option value="issn">ISSN</option>
+              <option value="itf">ITF</option>
+              <option value="jan">JAN</option>
+              <option value="nw-7">NW-7</option>
+              <option value="pzn">PZN</option>
+              <option value="upc">UPC</option>
+              <option value="upca">UPCA</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <button
+              id="barcode-generate"
+              class="btn btn-secondary"
+              type="submit"
+            >
+              Generate
+            </button>
+            <button id="barcode-download" class="btn btn-primary">
+              Download
+            </button>
+            <a id="barcode-link" class="download"> </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}

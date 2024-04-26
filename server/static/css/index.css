@@ -1,0 +1,105 @@
+@import url("./reset.css");
+@import url("./landmarks.css");
+@import url("./component.css");
+
+:root {
+  /* Neutrals */
+  --color-light: #ffffff;
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-300: #d4d4d4;
+  --color-neutral-400: #a3a3a3;
+  --color-neutral-500: #737373;
+  --color-neutral-600: #525252;
+  --color-neutral-700: #404040;
+  --color-neutral-800: #262626;
+  --color-neutral-900: #171717;
+  --color-neutral-950: #0a0a0a;
+  --color-dark: #000000;
+
+  /* Main */
+  --color-primary-emphasis: #a5f3fc;
+  --color-primary-subtle: #155e75;
+
+  --color-secondary-emphasis: #bae6fd;
+  --color-secondary-subtle: #075985;
+
+  /* Support */
+  --color-info-emphasis: #2563eb;
+  --color-info-subtle: #1e40af;
+
+  /* Effects */
+  --transition: all 250ms ease-in-out;
+  --shadow: 1px 1px 1rem var(--color-neutral-900);
+}
+
+:root {
+  /* Default Fallbacks */
+  --outline-color: transparent;
+  --header-height: 3.5rem;
+
+  /* Font */
+  --body-font-size: 1rem;
+  --body-font-weight: 400;
+  --body-font-height: 1.5;
+  --body-font-family: system-ui, sans-serif;
+
+  /* Theme */
+  --body-color: var(--color-light);
+  --body-color-bg: var(--color-dark);
+
+  --header-color-bg: var(--color-neutral-800);
+
+  --skip-nav-color: var(--color-neutral-300);
+  --skip-nav-color-bg: var(--color-neutral-900);
+
+  --nav-color: var(--color-neutral-500);
+  --nav-color-bg: var(--color-neutral-900);
+  --nav-color-border: var(--color-neutral-400);
+  --nav-color-hover: var(--color-neutral-600);
+
+  --footer-color-bg: var(--color-neutral-800);
+
+  --tabs-color: var(--color-neutral-300);
+  --tabs-color-bg: var(--color-neutral-800);
+  --tabs-color-active: var(--color-neutral-700);
+  --tabs-image-color-bg: var(--color-neutral-300);
+
+  --form-color: var(--color-neutral-200);
+  --form-color-bg: var(--color-neutral-700);
+
+  --input-color: var(--color-neutral-300);
+  --input-color-bg: var(--color-neutral-500);
+  --input-color-border: var(--color-neutral-400);
+}
+
+/* ----------------------------------------------------------------- */
+/* Screen Reader Only                                                */
+/* ----------------------------------------------------------------- */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+.skip-navigation-link {
+  position: absolute;
+  inset: auto auto auto 1rem;
+  transform: translate(0, -120%);
+  z-index: 1000;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0 0 0.25rem 0.25rem;
+  transition: var(--transition);
+  color: var(--skip-nav-color);
+  background-color: var(--skip-nav-color-bg);
+}
+.skip-navigation-link:focus {
+  transform: translate(0);
+  text-decoration: underline;
+}

@@ -1,0 +1,4 @@
+django-environ
+Django
+python-barcode 
+qrcode
