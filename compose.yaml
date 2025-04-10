@@ -29,7 +29,7 @@ services:
     build: $FASTAPI_IMAGE
     image: server_fastapi
     container_name: fastapi
-    # restart: unless-stopped
+    restart: unless-stopped
 
     environment:
       THIRD_PARTY_LOGS: $THIRD_PARTY_LOGS
