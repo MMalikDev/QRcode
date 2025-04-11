@@ -12,11 +12,15 @@ Usage: $0 [OPTIONS]
 Run Project in specified environment
 
     OPTIONS
-     -s     Start Reverse Proxy
-     -d     Run in Devcontainer
-     -l     Run in Local env
-     -c     Run in Docker
-     -h     Display this help
+     -d [OPTARG]    Run in Devcontainer
+     -l [OPTARG]    Run in Local env
+     -s             Start Reverse Proxy
+     -c             Run in Docker
+     -h             Display this help
+
+Options for Local and Devcontainer flags
+    - FastAPI   |   api
+    - Django    |   server
 
 Configure $0 defaults using .env file
 
@@ -123,17 +127,4 @@ use_venv(){
         mingw* | cygwin*) source .venv/Scripts/activate ;;
         *) log_error "$icon_start Unsupported operating system: $os" ;;
     esac
-}
-run_python(){
-    printf "\n$icon_start Running Python in local venv\n\n"
-    use_venv
-    cd $(get_env PYTHON_IMAGE)
-    python main.py $@
-    cd ..
-}
-run_python_dev(){
-    printf "\n$icon_start Running Python in devcontainer\n\n"
-    cd $(get_env PYTHON_IMAGE)
-    python3 main.py $@
-    cd ..
 }
